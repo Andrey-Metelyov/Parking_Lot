@@ -11,6 +11,9 @@ fun main() {
             "leave" -> parking.leave(response[1].toInt())
             "create" -> parking.create(response[1].toInt())
             "status" -> parking.status()
+            "reg_by_color" -> parking.regByColor(response[1])
+            "spot_by_color" -> parking.spotByColor(response[1])
+            "spot_by_reg" -> parking.spotByReg(response[1])
 //            else -> println("ERROR")
         }
     } while (command != "exit")

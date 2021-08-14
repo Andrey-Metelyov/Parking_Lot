@@ -56,4 +56,57 @@ class Parking {
         }
     }
 
+    fun regByColor(color: String) {
+        if (spots != null) {
+            val found = spots!!.filter { it != null && it.color.lowercase() == color.lowercase() }.map { it!!.id }
+            if (found.isEmpty()) {
+                println("No cars with color $color were found.")
+            } else {
+                println(found.joinToString())
+            }
+        } else {
+            println("Sorry, a parking lot has not been created.")
+            return
+        }
+    }
+
+    fun spotByColor(color: String) {
+        if (spots == null) {
+            println("Sorry, a parking lot has not been created.")
+            return
+        }
+        val found = mutableListOf<Int>()
+        for ((index, spot) in spots!!.withIndex()) {
+            if (spot != null) {
+                if (spot.color.lowercase() == color.lowercase()) {
+                    found.add(index + 1)
+                }
+            }
+        }
+        if (found.isEmpty()) {
+            println("No cars with color $color were found.")
+        } else {
+            println(found.joinToString())
+        }
+    }
+
+    fun spotByReg(id: String) {
+        if (spots == null) {
+            println("Sorry, a parking lot has not been created.")
+            return
+        }
+        val found = mutableListOf<Int>()
+        for ((index, spot) in spots!!.withIndex()) {
+            if (spot != null) {
+                if (spot.id.lowercase() == id.lowercase()) {
+                    found.add(index + 1)
+                }
+            }
+        }
+        if (found.isEmpty()) {
+            println("No cars with registration number $id were found.")
+        } else {
+            println(found.joinToString())
+        }
+    }
 }
